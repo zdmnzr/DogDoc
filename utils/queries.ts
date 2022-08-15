@@ -1,0 +1,279 @@
+export const getAllProjects = () => {
+  const query = `*[_type == "project"] | order(_createdAt desc){
+      _id,
+      description,
+      postedBy->{
+        _id,
+        image{
+          asset->{
+            _id,
+            url,
+          }
+        },
+        nickName,
+      },
+      images[]{
+        asset->{
+          _id,
+          url,
+        }
+      },
+      type,
+      likeds[]->{
+        _id,
+        image{
+          asset->{
+            _id,
+            url,
+          }
+        },
+        nickName,
+      },
+      collectioneds[]->{
+        _id,
+        image{
+          asset->{
+            _id,
+            url,
+          }
+        },
+        nickName,
+      },
+      comments[]{
+        content,
+        postedBy->{
+        _id,
+        nickName,
+        image{
+          asset->{
+            _id,
+            url,
+          }
+        },
+        },
+      },
+      time,
+    }`;
+
+  return query;
+};
+export const getAllUsers = () => {
+  const query = `*[_type == "user"] | order(_createdAt desc){
+      _id,
+      nickName,
+      image,
+    }`;
+  return query;
+};
+export const getUserProfile = (account: string | string[]) => {
+  const query = `*[_type == "user" && account == '${account}']{
+      _id,
+      nickName,
+      password,
+      slogan,
+      image{
+        asset->{
+          _id,
+          url,
+        }
+      },
+      follows[]->{
+        _id,
+        nickName,
+        image{
+          asset->{
+            _id,
+            url,
+          }
+        },
+      },
+      followeds[]->{
+        _id,
+        nickName,
+        image{
+          asset->{
+            _id,
+            url,
+          }
+        },
+      },
+      likes[]->{
+        _id,
+      },
+      collections[]->{
+        _id,
+      },
+    }`;
+
+  return query;
+}
+export const getUserProfileById = (_id: string | string[]) => {
+  const query = `*[_type == "user" && _id == '${_id}']{
+      _id,
+      nickName,
+      password,
+      slogan,
+      image{
+        asset->{
+          _id,
+          url,
+        }
+      },
+      follows[]->{
+        _id,
+        nickName,
+        image{
+          asset->{
+            _id,
+            url,
+          }
+        },
+      },
+      followeds[]->{
+        _id,
+        nickName,
+        image{
+          asset->{
+            _id,
+            url,
+          }
+        },
+      },
+      likes[]->{
+        _id,
+      },
+      collections[]->{
+        _id,
+      },
+      posts[]->{
+        _id,
+      },
+    }`;
+
+  return query;
+}
+export const getProjectById = (project_id: string | string[]) => {
+  const query = `*[_type == "project" && _id=='${project_id}']{
+      _id,
+      description,
+      postedBy->{
+        _id,
+        slogan,
+        image{
+          asset->{
+            _id,
+            url,
+          }
+        },
+        nickName,
+      },
+      images[]{
+        asset->{
+          _id,
+          url,
+        }
+      },
+      type,
+      likeds[]->{
+        _id,
+        image{
+          asset->{
+            _id,
+            url,
+          }
+        },
+        nickName,
+        slogan,
+      },
+      collectioneds[]->{
+        _id,
+        image{
+          asset->{
+            _id,
+            url,
+          }
+        },
+        nickName,
+        slogan,
+      },
+      comments[]{
+        content,
+        postedBy{
+        _id,
+        nickName,
+        image{
+          asset{
+            _id,
+            url,
+          }
+        },
+        },
+      },
+      time,
+    }`;
+
+  return query;
+};
+
+export const getPosts = (_id: string | string[]) => {
+  const query = `*[_type == "project" && postedBy->_id=='${_id}']{
+      _id,
+      description,
+      postedBy->{
+        _id,
+        slogan,
+        image{
+          asset->{
+            _id,
+            url,
+          }
+        },
+        nickName,
+      },
+      images[]{
+        asset->{
+          _id,
+          url,
+        }
+      },
+      type,
+      likeds[]->{
+        _id,
+        image{
+          asset->{
+            _id,
+            url,
+          }
+        },
+        nickName,
+        slogan,
+      },
+      collectioneds[]->{
+        _id,
+        image{
+          asset->{
+            _id,
+            url,
+          }
+        },
+        nickName,
+        slogan,
+      },
+      comments[]{
+        content,
+        postedBy{
+        _id,
+        nickName,
+        image{
+          asset{
+            _id,
+            url,
+          }
+        },
+        },
+      },
+      time,
+    }`;
+
+  return query;
+};
