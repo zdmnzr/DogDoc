@@ -26,7 +26,7 @@ const Account = () => {
     // }
     const uploadPoject = async (e) => {
         const selectedFile = e.target.files[0];
-
+        // console.log(selectedFile.type)
         const fileTypes = ['image/jpeg', 'image/webp', 'image/png'];
 
         // uploading asset to sanity

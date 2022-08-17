@@ -23,10 +23,15 @@ const Navbar = () => {
   console.log(user,userProfile,123)
 
   const clickHead = () => { 
-    if(!user){
-      Router.push(`/login`)
-    }else{
+    // if(JSON.stringify(user) == '{}' || user==null){
+    //   Router.push(`/login`)
+    // }else{
+    //   Router.push(`/user/${user._id}`)
+    // }
+    if(user?._id){
       Router.push(`/user/${user._id}`)
+    }else{
+      Router.push(`/login`)
     }
   }
   const upload=()=>{
