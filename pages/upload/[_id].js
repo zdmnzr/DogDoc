@@ -313,9 +313,9 @@ const Upload = () => {
                         <button className='py-[5px] flex-1 border-[1px] bg-orange-400 rounded-md md:px-[60px] md:py-[10px] md:text-[17px]' onClick={handlePost}>发布</button>
                     )}
                 </div>
-                <div className='m-[60px] bg-one' onClick={deleteAll}>
+                {/* <div className='m-[60px] bg-one' onClick={deleteAll}>
                     shanchu
-                </div>
+                </div> */}
             </div>
 
         </div>

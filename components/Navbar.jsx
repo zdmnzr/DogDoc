@@ -7,6 +7,8 @@ import { AiFillSetting } from 'react-icons/ai'
 import { BsPencilSquare } from 'react-icons/bs'
 import { HiSun } from 'react-icons/hi'
 import { BiUser } from 'react-icons/bi'
+import { BASE_URL } from '../utils'
+import axios from 'axios'
 
 
 const Navbar = () => {
@@ -17,10 +19,18 @@ const Navbar = () => {
   const [user,setUser] = useState(null);
 
   useEffect(()=>{
-    setUser(userProfile)
+    fetchUser();
+    // setUser(userProfile)
   },[userProfile])
 
+  const fetchUser =async()=> {
+    const _id = userProfile?._id
+    const {data} = await axios.get(`${BASE_URL}/api/userById/${_id}`)
+    // console.log(data,'user')
+    setUser(data[0]);
+  }
   console.log(user,userProfile,123)
+
 
   const clickHead = () => { 
     // if(JSON.stringify(user) == '{}' || user==null){
