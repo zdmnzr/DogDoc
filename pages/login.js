@@ -7,6 +7,7 @@ import { BiDotsHorizontalRounded } from 'react-icons/bi'
 import { BASE_URL } from '../utils'
 
 const Login = () => {
+    
     const [account, setAccount] = useState('');
     const [password, setPassword] = useState('');
     const [errAcc, seterrAcc] = useState(false);
