@@ -6,7 +6,7 @@ import { BiChevronLeft } from 'react-icons/bi'
 import { BiDotsHorizontalRounded } from 'react-icons/bi'
 import { BASE_URL } from '../utils'
 
-const login = () => {
+const Login = () => {
     const [account, setAccount] = useState('');
     const [password, setPassword] = useState('');
     const [errAcc, seterrAcc] = useState(false);
@@ -122,4 +122,4 @@ const login = () => {
     )
 }
 
-export default login
+export default Login
