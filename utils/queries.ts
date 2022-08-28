@@ -1,5 +1,7 @@
+// const query = `*[_type == "project" && postedBy->_id != 'ce15e4be-c6f2-4a44-8e9a-5223e12405ac' && postedBy->_id != '81d0ca43-2e5b-4c14-aa2d-c0c6b81ceb98']| order(_createdAt desc){
+
 export const getAllProjects = () => {
-  const query = `*[_type == "project"] | order(_createdAt desc){
+  const query = `*[_type == "project" ]| order(_createdAt desc){
       _id,
       description,
       postedBy->{

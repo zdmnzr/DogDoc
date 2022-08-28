@@ -8,13 +8,13 @@ import useAuthStore from '../store/authStore'
 import { TbMoodEmpty } from 'react-icons/tb'
 import { BASE_URL } from '../utils'
 
-export default function Home({ videos }) {
+export default function Home({ videoProps }) {
 
   const { scrolltop, setScrolltop, recfoll, type } = useSettingsStore();
   const { userProfile } = useAuthStore();
   const [user, setUser] = useState();
-
-  console.log(videos)
+  const [videos, setVideos] = useState([])
+  // console.log(videos)
 
 
   const fetchUser = async () => {
@@ -22,7 +22,25 @@ export default function Home({ videos }) {
     const { data } = await axios.get(`${BASE_URL}/api/userById/${_id}`)
     // console.log(data,'user')
     setUser(data[0]);
+    // console.log(1)
+    // console.log(user._id)
+    
   }
+  useEffect(()=>{
+    if ((user?._id != 'ce15e4be-c6f2-4a44-8e9a-5223e12405ac' && user?._id != '81d0ca43-2e5b-4c14-aa2d-c0c6b81ceb98')){
+      console.log(0)
+        
+        let hh = videoProps.filter(video => {
+          return video.postedBy._id != 'ce15e4be-c6f2-4a44-8e9a-5223e12405ac' && video.postedBy._id != '81d0ca43-2e5b-4c14-aa2d-c0c6b81ceb98'
+        })
+        // console.log(hh,58542158)
+        setVideos(hh)
+      }else{
+      console.log(1)
+  
+        setVideos(videoProps)
+      }
+  },[user])
 
   // if(!userProfile || (userProfile?._id != 'ce15e4be-c6f2-4a44-8e9a-5223e12405ac' && userProfile?._id != '81d0ca43-2e5b-4c14-aa2d-c0c6b81ceb98')){
   //   videos = videos.filter(video=>{
@@ -87,7 +105,15 @@ export default function Home({ videos }) {
     let nnn = document.getElementById('nnn');
     nnn.scrollTop = scrolltop
     if (userProfile) {
+      console.log('userProfile')
       fetchUser();
+    }else{
+      console.log('noUserProfile')
+      let hh = videoProps.filter(video => {
+        return video.postedBy._id != 'ce15e4be-c6f2-4a44-8e9a-5223e12405ac' && video.postedBy._id != '81d0ca43-2e5b-4c14-aa2d-c0c6b81ceb98'
+      })
+      // console.log(hh,58542158)
+      setVideos(hh)
     }
   }, [])
   return (
@@ -119,7 +145,7 @@ export default function Home({ videos }) {
           </div>
         ) : (
           <div>
-             {followedTypedVideos.length === 0 && (
+            {followedTypedVideos.length === 0 && (
               <div className='flex flex-col items-center text-gray-400'>
                 <TbMoodEmpty className='text-[150px] mt-[150px]' />
                 <div className='text-[23px]'>nothing there...</div>
@@ -140,7 +166,7 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      videos: data
+      videoProps: data
     }
   }
 }
