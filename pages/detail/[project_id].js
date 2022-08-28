@@ -167,7 +167,7 @@ const Detail = ({ detail }) => {
     const {data} = await axios.get(`${BASE_URL}/api/userById/${_id}`)
     console.log(data,'user')
     data[0].follows?.forEach(item=>{
-      console.log(item,123)
+      // console.log(item,123)
       if(item._id===projectData.postedBy._id){
         // followed = true;
         setFollowed(true)

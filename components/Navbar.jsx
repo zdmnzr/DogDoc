@@ -29,7 +29,7 @@ const Navbar = () => {
     // console.log(data,'user')
     setUser(data[0]);
   }
-  console.log(user,userProfile,123)
+  // console.log(user,userProfile,123)
 
 
   const clickHead = () => { 

@@ -26,7 +26,7 @@ const Account = () => {
     // }
     const uploadPoject = async (e) => {
         const selectedFile = e.target.files[0];
-        // console.log(selectedFile.type)
+        console.log(selectedFile,'image')
         const fileTypes = ['image/jpeg', 'image/webp', 'image/png'];
 
         // uploading asset to sanity
@@ -39,6 +39,7 @@ const Account = () => {
                 })
                 .then((data) => {
                     setHead({ _id: data._id, url: data.url });
+                    console.log(data,'image')
                     setLoading(false);
                 });
         } else {

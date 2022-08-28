@@ -166,7 +166,7 @@ const Upload = () => {
         setTopic('生活')
     }
     useEffect(() => {
-        console.log(images, 123)
+        // console.log(images, 123)
     }, [images])
     const uploadPoject = async (e) => {
         const selectedFile = e.target.files[0];

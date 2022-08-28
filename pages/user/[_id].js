@@ -95,6 +95,9 @@ const Personal = (D) => {
       })
     }
   }
+  const toUserDetail=()=>{
+    Router.push(`/userDetail/${userProfile._id}`)
+  }
   return (
     <div className='w-full h-full'>
       <div className='w-full'>
@@ -149,7 +152,7 @@ const Personal = (D) => {
           <div className='flex justify-start items-center text-[14px] p-[8px] py-[10px]'>
             <div className='mr-[5px]'>{D.slogan}</div>
             {isUser ? (
-              <BsPencil />
+              <BsPencil onClick={toUserDetail}/>
             ) : (
               <></>
             )}

@@ -10,7 +10,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     if (req.method === 'PUT') {
         const {content,postedBy} = req.body;
-        console.log(postedBy,123)
+        // console.log(postedBy,123)
         const {project_id}:any = req.query
         const data = await client
             .patch(project_id)
